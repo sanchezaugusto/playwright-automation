@@ -7,5 +7,10 @@ export const testData = {
       email: 'wrong@example.com',
       password: 'wrongPass'
     },
+    checkoutInfo: {
+      firstName: 'John',
+      lastName: 'Doe',
+      postalCode: '12345'
+    },
   };
   

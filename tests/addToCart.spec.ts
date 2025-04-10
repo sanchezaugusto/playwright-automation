@@ -11,7 +11,7 @@ test.describe('Add to cart functionality', () => {
         await loginPage.goto();
         await loginPage.login(testData.validUser.email, testData.validUser.password);
 
-        await inventoryPage.goto();
+        //await inventoryPage.goto();
         await inventoryPage.addToCart();
 
         // Verify that the item is added to the cart
