@@ -1,0 +1,50 @@
+import { test, expect } from '@playwright/test';
+import { LoginPage } from '../pages/LoginPage';
+import { InventoryPage } from '../pages/InventoryPage';
+import {testData} from '../utils/testData';
+
+test.describe('Inventory Filters', () => {
+  let loginPage: LoginPage;
+  let inventoryPage: InventoryPage;
+
+  test.beforeEach(async ({ page }) => {
+
+    loginPage = new LoginPage(page);
+    inventoryPage = new InventoryPage(page);
+
+    await loginPage.goto();
+    await loginPage.login(testData.validUser.email, testData.validUser.password);
+
+    //await inventoryPage.goto();
+  });
+
+  test('should sort items by A to Z', async () => {
+    await inventoryPage.orderByAZ();
+    const itemNames = await inventoryPage.page.locator('.inventory_item_name').allTextContents();
+    const sortedNames = [...itemNames].sort();
+    expect(itemNames).toEqual(sortedNames);
+  });
+
+  test('should sort items by Z to A', async () => {
+    await inventoryPage.orderByZA();
+    const itemNames = await inventoryPage.page.locator('.inventory_item_name').allTextContents();
+    const sortedNames = [...itemNames].sort().reverse();
+    expect(itemNames).toEqual(sortedNames);
+  });
+
+  test('should sort items by Low to High price', async () => {
+    await inventoryPage.orderByLoHi();
+    const itemPrices = await inventoryPage.page.locator('.inventory_item_price').allTextContents();
+    const numericPrices = itemPrices.map(price => parseFloat(price.replace('$', '')));
+    const sortedPrices = [...numericPrices].sort((a, b) => a - b);
+    expect(numericPrices).toEqual(sortedPrices);
+  });
+
+  test('should sort items by High to Low price', async () => {
+    await inventoryPage.orderByHiLo();
+    const itemPrices = await inventoryPage.page.locator('.inventory_item_price').allTextContents();
+    const numericPrices = itemPrices.map(price => parseFloat(price.replace('$', '')));
+    const sortedPrices = [...numericPrices].sort((a, b) => b - a);
+    expect(numericPrices).toEqual(sortedPrices);
+  });
+});
