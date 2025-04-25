@@ -17,5 +17,10 @@ test.describe('Login and Save Cookies', () => {
         fs.writeFileSync('cookies.json', JSON.stringify(cookies, null, 2));
 
         console.log('Cookies guardadas en cookies.json');
+
+        const sessionCookie = cookies.find(cookie => cookie.name === 'session-username');
+        expect(sessionCookie).toBeDefined();
+        expect(sessionCookie?.value).toBe('standard_user');
+        expect(sessionCookie?.domain).toBe('www.saucedemo.com');
     });
 });
