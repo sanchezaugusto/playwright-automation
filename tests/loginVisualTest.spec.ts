@@ -6,7 +6,6 @@ test.describe('Login Visual Test', () => {
         const loginPage = new LoginPage(page);
 
         await loginPage.goto();
-        
         expect( await loginPage.page.screenshot()).toMatchSnapshot('login-page.png');
     });
 });
