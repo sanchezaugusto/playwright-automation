@@ -2,20 +2,23 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { InventoryPage } from '../pages/InventoryPage';
 import {testData} from '../utils/testData';
+import * as fs from 'fs';
 
 test.describe('Inventory Filters', () => {
   let loginPage: LoginPage;
   let inventoryPage: InventoryPage;
 
-  test.beforeEach(async ({ page }) => {
+  test.beforeEach(async ({ page, context }) => {
 
-    loginPage = new LoginPage(page);
+    // Load cookies from the saved file
+    // Cookies should not be expired
+    if (fs.existsSync('cookies.json')) { 
+          const cookies = JSON.parse(fs.readFileSync('cookies.json', 'utf-8'));
+          await context.addCookies(cookies); // Add cookies to the browser context
+          
+      }
     inventoryPage = new InventoryPage(page);
-
-    await loginPage.goto();
-    await loginPage.login(testData.validUser.email, testData.validUser.password);
-
-    //await inventoryPage.goto();
+    await inventoryPage.goto();
   });
 
   test('should sort items by A to Z', async () => {
