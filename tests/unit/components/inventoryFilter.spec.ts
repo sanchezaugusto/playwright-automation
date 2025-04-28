@@ -1,8 +1,7 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
-import { InventoryPage } from '../pages/InventoryPage';
-import {testData} from '../utils/testData';
-import * as fs from 'fs';
+import { LoginPage } from '../../../pages/LoginPage';
+import { InventoryPage } from '../../../pages/InventoryPage';
+import { loadCookiesOrLogin } from '../../../utils/loadCookiesOrLogin';
 
 test.describe('Inventory Filters', () => {
   let loginPage: LoginPage;
@@ -10,13 +9,8 @@ test.describe('Inventory Filters', () => {
 
   test.beforeEach(async ({ page, context }) => {
 
-    // Load cookies from the saved file
-    // Cookies should not be expired
-    if (fs.existsSync('cookies.json')) { 
-          const cookies = JSON.parse(fs.readFileSync('cookies.json', 'utf-8'));
-          await context.addCookies(cookies); // Add cookies to the browser context
-          
-      }
+    await loadCookiesOrLogin(page , context);
+
     inventoryPage = new InventoryPage(page);
     await inventoryPage.goto();
   });
