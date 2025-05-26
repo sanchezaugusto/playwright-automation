@@ -7,5 +7,4 @@ node_modules/
 /allure-results/
 /blob-report/
 /playwright/.cache/
-/.github/
 cookies.json
