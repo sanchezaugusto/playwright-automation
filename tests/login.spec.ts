@@ -29,8 +29,10 @@ test.describe('Login functionality', () => {
     await loginPage.goto();
     await loginPage.login(testData.problemUser.email, testData.problemUser.password);
 
+    const imgSrc = await page.getAttribute('[data-test="inventory-item-sauce-labs-backpack-img"]', 'src');
+
     // await expect(loginPage.errorMessage).toBeVisible();
-    // await expect(loginPage.errorMessage).toHaveText('Epic sadface: Username and password do not match any user in this service');
+    await expect(imgSrc).toBe('/static/media/sl-404.168b1cce.jpg');
   });
 
 
