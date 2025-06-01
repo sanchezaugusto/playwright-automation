@@ -12,6 +12,11 @@ export class InventoryPage {
   readonly dropdownOptionZA: Locator;
   readonly dropdownOptionLoHi: Locator;
   readonly dropdownOptionHiLo: Locator;
+  readonly burgerButton: Locator;
+  readonly logoutButton: Locator;
+  readonly addtoCartProduct1: Locator;
+  readonly addtoCartProduct2: Locator;
+  readonly addtoCartProduct3: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -24,15 +29,29 @@ export class InventoryPage {
     this.dropdownOptionZA = page.locator('.product_sort_container option[value="za"]');
     this.dropdownOptionLoHi = page.locator('.product_sort_container option[value="lohi"]');
     this.dropdownOptionHiLo = page.locator('.product_sort_container option[value="hilo"]');
+    this.burgerButton = page.locator('#react-burger-menu-btn');
+    this.logoutButton = page.locator('#logout_sidebar_link');
+    this.addtoCartProduct1 = page.locator('#add-to-cart-sauce-labs-bolt-t-shirt');
+    this.addtoCartProduct2 = page.locator('#add-to-cart-sauce-labs-fleece-jacket');
+    this.addtoCartProduct3 = page.locator('#add-to-cart-sauce-labs-onesie');
   }
 
   async goto() {
     await this.page.goto(BASE_URL + '/inventory.html');
   }
 
+  async addProductToCart(addToCartProductButton: string) {
+    //addToCartProductButton is the "Add to Cart" id for a specific product
+    await this.page.locator(addToCartProductButton).click();
+  }
+
   async addToCart() {
       await this.addToCartButton.click();
   }
+
+  async gotoCart() {
+    await this.cartIcon.click();
+}
 
   async orderByAZ() {
     await this.dropdown.selectOption('az');
@@ -50,5 +69,8 @@ async orderByHiLo() {
     await this.dropdown.selectOption('hilo');
 }
 
-
+async logout() {
+    await this.burgerButton.click();
+    await this.logoutButton.click();
+}
 }
