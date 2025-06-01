@@ -26,6 +26,7 @@ export class CheckoutOnePage {
         await this.firstNameInput.fill(firstName);
         await this.lastNameInput.fill(lastName);
         await this.zipCodeInput.fill(zipCode);
+        await this.clickContinue();
     }
 
     async clickContinue() {
