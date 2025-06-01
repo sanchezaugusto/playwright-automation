@@ -28,7 +28,11 @@ test.describe('Purchase Flow', () => {
 
         await cartPage.clickCheckout();
 
-        await checkoutOnePage.fillCheckoutForm('John', 'Doe', '12345');
+        await checkoutOnePage.fillCheckoutForm(
+            testData.checkoutInfo.firstName,
+            testData.checkoutInfo.lastName,
+            testData.checkoutInfo.postalCode
+        );
         await checkoutTwoPage.clickFinish();
 
         await expect(checkoutCompletePage.orderMessage).toHaveText('Thank you for your order!');
