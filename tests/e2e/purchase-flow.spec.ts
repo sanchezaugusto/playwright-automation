@@ -5,6 +5,7 @@ import {CartPage} from '../../pages/CartPage';
 import {CheckoutOnePage} from '../../pages/CheckoutOnePage';
 import {CheckoutTwoPage} from '../../pages/CheckoutTwoPage';
 import {CheckoutCompletePage} from '../../pages/CheckoutCompletePage';
+import {testData} from '../../utils/testData';
 
 test.describe('Purchase Flow', () => {
     test('should complete the purchase flow', async ({page}) => {
@@ -17,7 +18,7 @@ test.describe('Purchase Flow', () => {
         const checkoutCompletePage = new CheckoutCompletePage(page);
         
         await loginPage.goto();
-        await loginPage.login('standard_user', 'secret_sauce');
+        await loginPage.login(testData.validUser.email, testData.validUser.password);
 
         await inventoryPage.goto();
         await inventoryPage.addProductToCart('#add-to-cart-sauce-labs-backpack');
