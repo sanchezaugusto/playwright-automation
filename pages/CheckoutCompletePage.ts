@@ -4,12 +4,12 @@ import {BASE_URL} from '../utils/config';
 export class CheckoutCompletePage {
   readonly page: Page;
   readonly backHomeButton: Locator;
-  readonly orderConfirmationMessage: Locator;
+  readonly orderMessage: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.backHomeButton = page.locator('#back-to-products');
-    this.orderConfirmationMessage = page.locator('.complete-header'); // Adjust the selector based on the actual order confirmation message element
+    this.orderMessage = page.locator('.complete-header'); // Adjust the selector based on the actual order confirmation message element
   }
 
   async goto() {
@@ -20,7 +20,7 @@ export class CheckoutCompletePage {
     await this.backHomeButton.click();
   }
 
-  async getOrderConfirmationMessage() {
-    return await this.orderConfirmationMessage.textContent();
+  async getOrderMessage() {
+    return await this.orderMessage.textContent();
   }
 }
