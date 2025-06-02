@@ -30,7 +30,6 @@ test.describe('Checkout Process', () => {
 
         // Step 4: Fill out checkout information
         await checkoutOnePage.fillCheckoutForm(testData.checkoutInfo.firstName, testData.checkoutInfo.lastName, testData.checkoutInfo.postalCode);
-        await checkoutOnePage.clickContinue();
 
         // Step 5: Finish the checkout process
         await checkoutTwoPage.clickFinish();
