@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
-import { LoginPage } from '../pages/LoginPage';
-import { InventoryPage } from '../pages/InventoryPage';
-import { testData } from '../utils/testData';
-import { loginAndSaveCookies } from '../utils/loginAndSaveCookies';
+import { LoginPage } from '../../pages/LoginPage';
+import { InventoryPage } from '../../pages/InventoryPage';
+import { testData } from '../../utils/testData';
+import { loginAndSaveCookies } from '../../utils/loginAndSaveCookies';
 import * as fs from 'fs';
 
 test.describe('Login and Save Cookies', () => {

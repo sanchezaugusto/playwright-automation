@@ -1,8 +1,8 @@
 import {test, expect} from '@playwright/test';
-import {LoginPage} from '../pages/LoginPage';
-import {InventoryPage} from '../pages/InventoryPage';
-import {testData} from '../utils/testData';
-import { loadCookiesOrLogin } from '../utils/loadCookiesOrLogin';
+import {LoginPage} from '../../pages/LoginPage';
+import {InventoryPage} from '../../pages/InventoryPage';
+import {testData} from '../../utils/testData';
+import { loadCookiesOrLogin } from '../../utils/loadCookiesOrLogin';
 
 test.describe('Add to cart functionality', () => {
     test('should add item to cart successfully', async ({page, context}) => {

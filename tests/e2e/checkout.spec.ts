@@ -1,11 +1,11 @@
 import {test, expect} from '@playwright/test';
-import {LoginPage} from '../pages/LoginPage';
-import {InventoryPage} from '../pages/InventoryPage';
-import {CartPage} from '../pages/CartPage';
-import {CheckoutOnePage} from '../pages/CheckoutOnePage';
-import {CheckoutTwoPage} from '../pages/CheckoutTwoPage';
-import {CheckoutCompletePage} from '../pages/CheckoutCompletePage';
-import {testData} from '../utils/testData';
+import {LoginPage} from '../../pages/LoginPage';
+import {InventoryPage} from '../../pages/InventoryPage';
+import {CartPage} from '../../pages/CartPage';
+import {CheckoutOnePage} from '../../pages/CheckoutOnePage';
+import {CheckoutTwoPage} from '../../pages/CheckoutTwoPage';
+import {CheckoutCompletePage} from '../../pages/CheckoutCompletePage';
+import {testData} from '../../utils/testData';
 
 test.describe('Checkout Process', () => {
     test('should complete the checkout process successfully', async ({page}) => {
