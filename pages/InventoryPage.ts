@@ -17,6 +17,9 @@ export class InventoryPage {
   readonly addtoCartProduct1: Locator;
   readonly addtoCartProduct2: Locator;
   readonly addtoCartProduct3: Locator;
+  readonly twitterIcon: Locator;
+  readonly facebookIcon: Locator;
+  readonly linkedinIcon: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -34,6 +37,9 @@ export class InventoryPage {
     this.addtoCartProduct1 = page.locator('#add-to-cart-sauce-labs-bolt-t-shirt');
     this.addtoCartProduct2 = page.locator('#add-to-cart-sauce-labs-fleece-jacket');
     this.addtoCartProduct3 = page.locator('#add-to-cart-sauce-labs-onesie');
+    this.twitterIcon = page.locator('.social_twitter a');
+    this.facebookIcon = page.locator('.social_facebook');
+    this.linkedinIcon = page.locator('.social_linkedin');
   }
 
   async goto() {
