@@ -38,8 +38,8 @@ export class InventoryPage {
     this.addtoCartProduct2 = page.locator('#add-to-cart-sauce-labs-fleece-jacket');
     this.addtoCartProduct3 = page.locator('#add-to-cart-sauce-labs-onesie');
     this.twitterIcon = page.locator('.social_twitter a');
-    this.facebookIcon = page.locator('.social_facebook');
-    this.linkedinIcon = page.locator('.social_linkedin');
+    this.facebookIcon = page.locator('.social_facebook a');
+    this.linkedinIcon = page.locator('.social_linkedin a');
   }
 
   async goto() {
